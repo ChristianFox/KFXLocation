@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2746EF7271401CD82F5F3BE9 /* Pods_KFXLocation_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F29D6FE6907851CEC136C7EE /* Pods_KFXLocation_Tests.framework */; };
+		5B06BF601F0CC9F900042955 /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = 5B06BF5E1F0CC9F900042955 /* CHANGELOG.md */; };
+		5B06BF611F0CC9F900042955 /* NOTES.md in Sources */ = {isa = PBXBuildFile; fileRef = 5B06BF5F1F0CC9F900042955 /* NOTES.md */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -37,10 +39,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07B1126D4C1151F418AD836D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		08CCFC0265CEBC96BBB1193F /* KFXLocation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = KFXLocation.podspec; path = ../KFXLocation.podspec; sourceTree = "<group>"; };
+		07B1126D4C1151F418AD836D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		08CCFC0265CEBC96BBB1193F /* KFXLocation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = KFXLocation.podspec; path = ../KFXLocation.podspec; sourceTree = "<group>"; };
 		10291707CAEF77ED31EE989D /* Pods-KFXLocation_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KFXLocation_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-KFXLocation_Example/Pods-KFXLocation_Example.release.xcconfig"; sourceTree = "<group>"; };
 		57549702C5056C76C755A209 /* Pods_KFXLocation_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KFXLocation_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B06BF5E1F0CC9F900042955 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		5B06BF5F1F0CC9F900042955 /* NOTES.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = NOTES.md; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* KFXLocation_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KFXLocation_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -66,7 +70,7 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F22D8F5040896024EF0A1982 /* Pods-KFXLocation_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KFXLocation_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KFXLocation_Example/Pods-KFXLocation_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F29D6FE6907851CEC136C7EE /* Pods_KFXLocation_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KFXLocation_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD04AE22539C59648B1F21D1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		FD04AE22539C59648B1F21D1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +184,8 @@
 			children = (
 				08CCFC0265CEBC96BBB1193F /* KFXLocation.podspec */,
 				FD04AE22539C59648B1F21D1 /* README.md */,
+				5B06BF5E1F0CC9F900042955 /* CHANGELOG.md */,
+				5B06BF5F1F0CC9F900042955 /* NOTES.md */,
 				07B1126D4C1151F418AD836D /* LICENSE */,
 			);
 			name = "Podspec Metadata";
@@ -204,6 +210,7 @@
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "KFXLocation_Example" */;
 			buildPhases = (
 				0B7C8E1E114D125B40662A9C /* [CP] Check Pods Manifest.lock */,
+				5B06BF621F0CCA5800042955 /* Run Script - Increment Build No */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
@@ -250,6 +257,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = ChristianFox;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = 94Z3AYT2U7;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -327,6 +337,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		5B06BF621F0CCA5800042955 /* Run Script - Increment Build No */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - Increment Build No";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n";
+		};
 		6F8BD10BC4A418A63AAE0893 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -395,8 +419,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* DEMOAppDelegate.m in Sources */,
+				5B06BF611F0CC9F900042955 /* NOTES.md in Sources */,
 				6003F5A7195388D20070C39A /* DEMOViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				5B06BF601F0CC9F900042955 /* CHANGELOG.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +550,7 @@
 			baseConfigurationReference = F22D8F5040896024EF0A1982 /* Pods-KFXLocation_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 94Z3AYT2U7;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KFXLocation/KFXLocation-Prefix.pch";
 				INFOPLIST_FILE = "KFXLocation/KFXLocation-Info.plist";
@@ -539,6 +566,7 @@
 			baseConfigurationReference = 10291707CAEF77ED31EE989D /* Pods-KFXLocation_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 94Z3AYT2U7;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KFXLocation/KFXLocation-Prefix.pch";
 				INFOPLIST_FILE = "KFXLocation/KFXLocation-Info.plist";

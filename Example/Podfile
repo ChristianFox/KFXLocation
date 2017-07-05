@@ -2,6 +2,17 @@ use_frameworks!
 
 target 'KFXLocation_Example' do
   pod 'KFXLocation', :path => '../'
+  
+  ## Sources
+  ### If using private pods
+  source 'https://bitbucket.org/kfxteam/kfxtech_cocoapodsspec'
+  
+  pod 'KFXAdditions'
+  pod 'KFXUtilities'
+  
+  ### If using from trunk
+  source 'http://github.com/Cocoapods/Specs.git'
+
 
   target 'KFXLocation_Tests' do
     inherit! :search_paths

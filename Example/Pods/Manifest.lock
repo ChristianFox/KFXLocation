@@ -1,0 +1,25 @@
+PODS:
+  - KFXAdditions (0.35.3)
+  - KFXLocation (0.1.0):
+    - KFXAdditions
+    - KFXUtilities
+  - KFXUtilities (0.15.1):
+    - KFXAdditions
+
+DEPENDENCIES:
+  - KFXAdditions
+  - KFXLocation (from `../`)
+  - KFXUtilities
+
+EXTERNAL SOURCES:
+  KFXLocation:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  KFXAdditions: '04029bf103bbf09d3a75a9f31c7752b1c961f901'
+  KFXLocation: 336282d9c7f60ae5916414f53f360d36c69bf0de
+  KFXUtilities: 240e1011b0d9e30737145eb32335a9b4d184b07f
+
+PODFILE CHECKSUM: 053d8775b7d76e8ed8588a578975a662921ae8f4
+
+COCOAPODS: 1.2.1
