@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'KFXLocation_Example' do
+  pod 'KFXLocation', :path => '../'
+
+  target 'KFXLocation_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
