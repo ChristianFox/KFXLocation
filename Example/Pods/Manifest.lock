@@ -1,6 +1,6 @@
 PODS:
-  - KFXAdditions (1.1.0)
-  - KFXCore (0.2.0)
+  - KFXAdditions (1.1.1)
+  - KFXCore (0.2.1)
   - KFXLocation (0.4.0):
     - KFXAdditions
     - KFXCore
@@ -15,8 +15,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  KFXAdditions: 6e8deedf2e249191cefc9e1558d993aa483a9a51
-  KFXCore: 45be98dbaa56958bcfb8b0946751ab59eacba7b5
+  KFXAdditions: 6295df2024aa9adb3fab5f2b65e9d6c1244fbb86
+  KFXCore: d09e22968bc613138aee225e9f8ef8bfb0adfb21
   KFXLocation: 4168cecd7ab17fc7e5e2ef90340959134f7f5c14
 
 PODFILE CHECKSUM: 0c879313abf916ea6f6ecbeb8acc77888fa60fea

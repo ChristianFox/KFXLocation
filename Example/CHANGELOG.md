@@ -1,7 +1,9 @@
 
 # ChangeLog - KFXLocation
 
-### v0.4.0 - Updates pods
+### v0.4.1 - updates pods
+
+### v0.4.0 - Updates pod dependencies - gets rid of KFXUtilities and adds KFXCore
 
 ## v0.3.0.0 - Adds documenting comments
 

@@ -84,7 +84,7 @@ typedef NS_ENUM(NSUInteger, KFXDeviceFamily) {
 //-----------------------------------
 // Completion Block with no params
 //-----------------------------------
-typedef void(^KFXCompletionBlock)();
+typedef void(^KFXCompletionBlock)(void);
 
 //-----------------------------------
 // Happenings
