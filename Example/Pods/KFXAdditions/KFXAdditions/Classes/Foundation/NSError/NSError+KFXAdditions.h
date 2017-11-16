@@ -63,10 +63,16 @@ typedef NS_ENUM(NSUInteger, KFXErrorCode){
 	KFXErrorCodeFailedToReadDataFromFile,
 	// # Core Data
 	KFXErrorCodeManagedObjectContextIsNil,
-	KFXErrorCodeManagedObjectIsNil
+	KFXErrorCodeManagedObjectIsNil,
+    // # Network / System
+    KFXErrorCodeNoInternetConnection
 };
 
-
+/**
+ * Error Codes to Add:
+ * -
+ *
+ **/
 
 @interface NSError (KFXAdditions)
 

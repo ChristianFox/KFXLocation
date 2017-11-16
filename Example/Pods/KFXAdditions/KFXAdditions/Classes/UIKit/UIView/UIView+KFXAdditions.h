@@ -13,6 +13,23 @@
 
 @interface UIView (KFXAdditions)
 
+
+//--------------------------------------------------------
+#pragma mark Dimensions Convienence Accessors
+//--------------------------------------------------------
+@property (nonatomic) CGFloat x;
+@property (nonatomic) CGFloat y;
+@property (nonatomic) CGFloat width;
+@property (nonatomic) CGFloat height;
+@property (nonatomic,readonly) CGFloat top;
+@property (nonatomic,readonly) CGFloat left;
+@property (nonatomic,readonly) CGFloat bottom;
+@property (nonatomic,readonly) CGFloat right;
+
+-(void)setOrigin:(CGPoint)origin;
+-(void)setSize:(CGSize)size;
+
+
 //--------------------------------------------------------
 #pragma mark Init
 //--------------------------------------------------------
@@ -31,6 +48,74 @@
 -(void)kfx_addBorderWithRadius:(CGFloat)radius
 						 width:(CGFloat)borderWidth
 						colour:(UIColor*)colour;
+/*
+ https://coderwall.com/p/rxat4a/uiview-category-for-rounding-just-the-corners-which-you-want-not-all-like-calayer-cornerradius
+ */
+/// Round only the specified corners
+-(void)kfx_addRoundedCorners:(UIRectCorner)corners radius:(CGFloat)radius;
+
+
+//--------------------------------------------------------
+#pragma mark Animation
+//--------------------------------------------------------
+-(void)kfx_fadeInWithDuration:(NSTimeInterval)duration
+               completion:(void(^)(BOOL))completion;
+-(void)kfx_fadeOutWithDuration:(NSTimeInterval)duration
+                completion:(void(^)(BOOL))completion;
+
+
+//--------------------------------------------------------
+#pragma mark Images
+//--------------------------------------------------------
+-(UIImage*)kfx_imageRepresentation;
+
+
+//--------------------------------------------------------
+#pragma mark Hierarchy
+//--------------------------------------------------------
+/// Find the first superview of the receiver that is a kind of the given class
+-(UIView*)kfx_superviewOfClass:(Class)theClass;
+
+/// Find the first superview of the receiver that is a member or kind of the given class. If strict = YES then only member of class is good enough, otherwise member or kind is acceptable.
+-(UIView*)kfx_superviewOfClass:(Class)theClass strict:(BOOL)strict;
+
+/// Find the first subview of the receiver that is a kind of the given class
+-(UIView*)kfx_subviewOfClass:(Class)theClass;
+
+/// Find the first subview of the receiver that is a member or kind of the given class. If strict = YES then only member of class is good enough, otherwise member or kind is acceptable.
+-(UIView*)kfx_subviewOfClass:(Class)theClass strict:(BOOL)strict;
+
+/// Remove the view from the receiver if the view is a subview
+-(BOOL)kfx_removeSubview:(UIView*)view;
+
+/// Remove all subviews from the reciever
+-(void)kfx_removeAllSubviews;
+
+//--------------------------------------------------------
+#pragma mark Background
+//--------------------------------------------------------
+/// Add gradient layer at index 0
+-(void)kfx_setBackgroundGradientWithTopColor:(UIColor *)top
+                                 bottomColor:(UIColor *)bottom;
+
+/// Add a shadow to the receiver
+-(void)kfx_setShadowWithOffset:(CGSize)offset
+                        radius:(CGFloat)radius
+                       opacity:(CGFloat)opacity;
 
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+

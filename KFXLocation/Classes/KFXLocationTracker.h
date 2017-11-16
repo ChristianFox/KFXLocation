@@ -47,20 +47,31 @@ typedef void(^KFXLocationUpdatesBlock)(NSArray<CLLocation*> *locations);
 @property (strong,nonatomic) CLLocationManager *locationManager;
 @property (strong,atomic) CLLocation *lastKnownLocation;
 // Settings
+/// The maximum location age in seconds for a CLLocation. Any locations older than this will be rejected and the -locationTracker:didRejectLocation:forReason: delegate method will be called.
 @property (nonatomic) NSTimeInterval maximumLocationAge;
+/// The minimum horizontal accuracy in for a CLLocation. Any locations with an accuracy higher than this will be rejected and the -locationTracker:didRejectLocation:forReason: delegate method will be called.
 @property (nonatomic) CLLocationAccuracy minimumHorizontalAccuracy;
 
 //--------------------------------------------------------
 #pragma mark - Initilisers
 //--------------------------------------------------------
+/// Initilise an instance
 -(instancetype)init;
+
+/// Initilise an instance of KFXLocationTracker with the default values
 +(instancetype)locationTrackerWithDefaults;
+
+/// Initilise an instance of KFXLocationTracker with the given desiredAccuracy and distanceFilter
 +(instancetype)locationTrackerWithDesiredAccuracy:(CLLocationAccuracy)accuracy
 								   distanceFilter:(CLLocationDistance)distance;
 
 //--------------------------------------------------------
 #pragma mark Blocks based API
 //--------------------------------------------------------
+/**
+ * @brief Request the user's authorisation to access the device's location
+ * @param callbackBlock  A block object to be executed when the operation completes. This block has no return value and takes 1 argument: a CLAuthorizationStatus value
+ **/
 -(void)requestLocationTrackingAuthorisationWithBlock:(KFXLocationAuthorisationBlock)callbackBlock;
 
 /**
@@ -73,6 +84,7 @@ typedef void(^KFXLocationUpdatesBlock)(NSArray<CLLocation*> *locations);
 //--------------------------------------------------------
 #pragma mark Helpers
 //--------------------------------------------------------
+/// Returns an NSString description of the KFXLocationRejectionReason enum value
 +(NSString*)descriptionForRejectionReason:(KFXLocationRejectionReason)rejectionReason;
 
 

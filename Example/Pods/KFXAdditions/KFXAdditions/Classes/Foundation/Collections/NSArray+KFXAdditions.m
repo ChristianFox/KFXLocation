@@ -42,7 +42,14 @@
     }
 }
 
-
++(NSArray *)kfx_arrayByCombingObjectsFromArrays:(NSArray<NSArray *> *)arrays{
+    
+    NSMutableArray *mutArray = [NSMutableArray arrayWithCapacity:10];
+    for (NSArray *anArray in arrays) {
+        [mutArray addObjectsFromArray:anArray];
+    }
+    return mutArray.copy;
+}
 
 
 -(NSUInteger)kfx_depth{

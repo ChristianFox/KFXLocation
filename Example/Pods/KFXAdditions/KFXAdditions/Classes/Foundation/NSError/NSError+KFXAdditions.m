@@ -334,7 +334,10 @@
 			description = @"KFXErrorCodeManagedObjectIsNil";
 			break;
 		}
-			
+        case KFXErrorCodeNoInternetConnection:{
+            description = @"KFXErrorCodeNoInternetConnection";
+            break;
+        }
 		default:
 			NSAssert(NO,@"Hit default case of a switch statement. %s. Value is : %ld",__PRETTY_FUNCTION__, (long)errorCode);
 			break;

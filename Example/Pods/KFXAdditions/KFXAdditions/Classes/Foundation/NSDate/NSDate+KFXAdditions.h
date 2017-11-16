@@ -30,7 +30,7 @@
 
 
 //--------------------------------------------------------
-#pragma mark - Equality
+#pragma mark Equality
 //--------------------------------------------------------
 -(BOOL)kfx_isDayEqualToDate:(NSDate*)anotherDate;
 -(BOOL)kfx_isHourEqualToDate:(NSDate*)anotherDate;
@@ -39,7 +39,7 @@
 
 
 //--------------------------------------------------------
-#pragma mark - Components/difference between dates
+#pragma mark Components/difference between dates
 //--------------------------------------------------------
 /// If the receiver is earlier than the otherDate then the return value will be negative.
 -(NSInteger)kfx_daysSinceDate:(NSDate*)otherDate
@@ -53,13 +53,29 @@
 -(NSInteger)hoursSinceMidnight;
 
 
-
 //--------------------------------------------------------
-#pragma mark - Components
+#pragma mark Components
 //--------------------------------------------------------
 -(NSDateComponents*)kfx_currentCalendarDateComponents;
 
+//--------------------------------------------------------
+#pragma mark New Dates
+//--------------------------------------------------------
+/// Create a new date with the receiver's date & time but adding the days
+-(NSDate*)kfx_dateByAddingDays:(NSInteger)days;
 
+/// Create a new date with the receiver's day, month and year but updating the hour, minute and second to the given values
+-(NSDate*)kfx_dateWithHour:(NSInteger)hour minute:(NSInteger)min second:(NSInteger)sec;
+
+/// Create a new date with the receiver's month and year but updating the hour, minute and second to the given values and adding the days value
+-(NSDate*)kfx_dateByAddingDays:(NSInteger)days withHour:(NSInteger)hour minute:(NSInteger)min second:(NSInteger)sec;
 
 
 @end
+
+
+
+
+
+
+

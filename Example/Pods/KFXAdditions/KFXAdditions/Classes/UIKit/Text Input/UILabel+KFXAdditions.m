@@ -12,6 +12,9 @@
 
 @implementation UILabel (KFXAdditions)
 
+//--------------------------------------------------------
+#pragma mark Set Text with defaults
+//--------------------------------------------------------
 -(BOOL)kfx_setText:(NSString*)text withDefault:(NSString*)defaultText{
 
     if (text == nil || [text isEqual:[NSNull null]] || text.length == 0) {
@@ -46,5 +49,33 @@
     }
 
 }
+
+
+
+//--------------------------------------------------------
+#pragma mark Frame
+//--------------------------------------------------------
+-(CGFloat)kfx_heightForText{
+    return [self kfx_boundingRectForText].size.height;
+}
+
+-(CGRect)kfx_boundingRectForText{
+    return [self.text boundingRectWithSize:CGSizeMake(CGRectGetWidth(self.bounds), CGFLOAT_MAX)
+                                   options:NSStringDrawingUsesLineFragmentOrigin
+                                attributes:@{NSFontAttributeName: self.font}
+                                   context:nil];
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

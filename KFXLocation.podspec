@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KFXLocation'
-  s.version          = '0.2.0.0'
+  s.version          = '0.4.0'
   s.summary          = 'KFXLocation pod'
 
 
@@ -19,6 +19,6 @@ Location Tracker (manager), helper methods
 
   s.source_files = 'KFXLocation/Classes/**/*'
   s.dependency 'KFXAdditions'
-  s.dependency 'KFXUtilities'
+  s.dependency 'KFXCore'
 
 end

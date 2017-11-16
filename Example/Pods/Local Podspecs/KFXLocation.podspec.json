@@ -1,9 +1,9 @@
 {
   "name": "KFXLocation",
-  "version": "0.1.0",
+  "version": "0.4.0",
   "summary": "KFXLocation pod",
   "description": "Location Tracker (manager), helper methods",
-  "homepage": "https://kfxtech@bitbucket.org/kfxteam/kfxlocation.git",
+  "homepage": "https://kfxtech@bitbucket.org/kfx_pods/kfxlocationmanager.git",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,8 +12,8 @@
     "ChristianFox": "christianfox890@icloud.com"
   },
   "source": {
-    "git": "https://kfxtech@bitbucket.org/kfxteam/kfxlocation.git",
-    "tag": "0.1.0"
+    "git": "https://kfxtech@bitbucket.org/kfx_pods/kfxlocationmanager.git",
+    "tag": "0.4.0"
   },
   "platforms": {
     "ios": "8.0"
@@ -23,7 +23,7 @@
     "KFXAdditions": [
 
     ],
-    "KFXUtilities": [
+    "KFXCore": [
 
     ]
   }

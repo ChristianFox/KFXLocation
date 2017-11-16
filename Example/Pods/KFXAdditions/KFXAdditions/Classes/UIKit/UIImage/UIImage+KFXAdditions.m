@@ -623,6 +623,26 @@
 }
 
 
+//--------------------------------------------------------
+#pragma mark Generate Images
+//--------------------------------------------------------
++(UIImage*)kfx_imageWithColour:(UIColor*)colour{
+    
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContextWithOptions(rect.size, YES, 0);
+    [colour setFill];
+    UIRectFill(rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
+
 
 
 @end
+
+
+
+
+

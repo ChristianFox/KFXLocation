@@ -90,17 +90,7 @@
     if (components.count == 0) {
         return nil;
     }
-    
-    NSMutableString *mutString = [[NSMutableString alloc]init];
-    
-    NSInteger idx = 0;
-    for (NSString *subString in components) {
-        [mutString appendString:subString];
-        if (++idx < components.count) {
-            [mutString appendString:separator];
-        }
-    }
-    return [mutString copy];
+    return [components componentsJoinedByString:separator];
 }
 
 +(NSString*)kfx_yesOrNo:(BOOL)boolValue{
@@ -157,6 +147,35 @@
     return count;
 }
 
+-(NSUInteger)kfx_indexOfSubstring:(NSString *)substring{
+    NSRange range = [self rangeOfString:substring];
+    return range.location;
+}
+
+-(NSUInteger)kfx_indexOfSubstring:(NSString *)substring
+                        fromIndex:(NSInteger)index{
+    NSString *test = [self substringFromIndex:index];
+    return [test kfx_indexOfSubstring:substring] + index;
+}
+
+-(NSUInteger)kfx_indexOfLastSubstring:(NSString *)substring{
+    
+    NSUInteger finalIndex = NSNotFound;
+    NSUInteger matchIndex = 0;
+    NSString* test = self;
+    while ([test containsString:substring]) {
+
+        matchIndex = [test kfx_indexOfSubstring:substring];
+        if (finalIndex == NSNotFound) {
+            finalIndex = matchIndex;
+        }else{
+            finalIndex = matchIndex+1 + finalIndex;
+        }
+        test = [test substringFromIndex:matchIndex + 1];
+    }
+    return finalIndex;
+}
+
 //--------------------------------------------------------
 #pragma mark - New String with edits
 //--------------------------------------------------------
@@ -190,6 +209,10 @@
         return whiteSpaceSquashed;
     }
 
+}
+
+-(NSString *)kfx_trim{
+    return [self kfx_stringByTrimmingWhiteSpaceAndNewLines];
 }
 
 -(NSString *)kfx_stringByTrimmingWhiteSpaceAndNewLines{

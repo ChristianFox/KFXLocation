@@ -16,7 +16,11 @@
 -(NSArray*)kfx_reversedArray;
 -(id)kfx_randomObject;
 
-
+/**
+ * Create a new array populated with all the objects from all the given arrays
+ * @return a new NSArray
+ **/
++(NSArray*)kfx_arrayByCombingObjectsFromArrays:(NSArray<NSArray*>*)arrays;
 
 /**
  * @brief Determines the depth of this collection. Counts the number of collections contained. 
@@ -24,6 +28,7 @@
  * @return The depth
  **/
 -(NSUInteger)kfx_depth;
+
 
 
 @end

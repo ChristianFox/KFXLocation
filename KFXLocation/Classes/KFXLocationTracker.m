@@ -41,8 +41,6 @@
 	
 	KFXLocationTracker *tracker = [self locationTrackerWithDesiredAccuracy:kCLLocationAccuracyHundredMeters
 															distanceFilter:100];
-
-	
 	return tracker;
 }
 
@@ -57,9 +55,6 @@
 	tracker.locationManager = locationManager;
 	tracker.maximumLocationAge = 60.0;
 	tracker.minimumHorizontalAccuracy = 200.0;
-
-
-	
 	return tracker;
 }
 

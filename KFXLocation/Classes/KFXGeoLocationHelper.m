@@ -9,7 +9,7 @@
  ************************************/
 
 #import "KFXGeoLocationHelper.h"
-#import <KFXUtilities/KFXCommonConstants.h>
+#import <KFXCore/KFXCore.h>
 
 @implementation KFXGeoLocationHelper
 
@@ -219,8 +219,7 @@
         return nil;
     }
     
-    NSArray<CLLocation*>*sortedLocations = [self sortLocationsChronologically:locations
-                                                                    ascending:YES];
+    NSArray<CLLocation*>*sortedLocations = [self sortLocationsChronologically:locations ascending:YES];
     NSMutableArray<NSNumber*> *mutArray = [NSMutableArray arrayWithCapacity:sortedLocations.count];
     
     for (NSInteger idx = 1; idx < sortedLocations.count ; idx++) {

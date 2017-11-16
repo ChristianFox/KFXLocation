@@ -184,6 +184,35 @@
 }
 
 
+//--------------------------------------------------------
+#pragma mark New Dates
+//--------------------------------------------------------
+-(NSDate *)kfx_dateByAddingDays:(NSInteger)days{
+    
+    NSDateComponents *components = [self kfx_currentCalendarDateComponents];
+    [components setDay:components.day+days];
+    return [[NSCalendar currentCalendar] dateFromComponents:components];
+}
+
+-(NSDate*)kfx_dateWithHour:(NSInteger)hour minute:(NSInteger)min second:(NSInteger)sec{
+    
+    NSDateComponents *components = [self kfx_currentCalendarDateComponents];
+    [components setHour:hour];
+    [components setMinute:min];
+    [components setSecond:sec];
+    return [[NSCalendar currentCalendar] dateFromComponents:components];
+}
+
+-(NSDate*)kfx_dateByAddingDays:(NSInteger)days withHour:(NSInteger)hour minute:(NSInteger)min second:(NSInteger)sec{
+    
+    NSDateComponents *components = [self kfx_currentCalendarDateComponents];
+    [components setDay:components.day+days];
+    [components setHour:hour];
+    [components setMinute:min];
+    [components setSecond:sec];
+    return [[NSCalendar currentCalendar] dateFromComponents:components];
+}
+
 
 
 @end
