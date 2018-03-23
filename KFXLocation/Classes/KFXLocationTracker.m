@@ -1,12 +1,13 @@
 /********************************
  *
- * Copyright © 2016-2017 Christian Fox
- * All Rights Reserved
- * Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
+ * Copyright © 2016-2018 Christian Fox
+ *
+ * MIT Licence - Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
  *
  * This file is included with KFXLocation
  *
  ************************************/
+
 
 
 #import "KFXLocationTracker.h"
@@ -86,7 +87,9 @@
 		}else{
 			self.authorisationCallback([CLLocationManager authorizationStatus]);
 		}
-	}
+    }else{
+        self.authorisationCallback([CLLocationManager authorizationStatus]);
+    }
 }
 
 -(void)locationUpdatesWithBlock:(KFXLocationUpdatesBlock)callbackBlock{
@@ -201,8 +204,8 @@
 	if (status == kCLAuthorizationStatusNotDetermined) {
 		return;
 	}
-	if ([self.delegate respondsToSelector:@selector(locationTracker:didChangeAuthrizationStatus:)]) {
-		[self.delegate locationTracker:self didChangeAuthrizationStatus:status];
+	if ([self.delegate respondsToSelector:@selector(locationTracker:didChangeAuthorizationStatus:)]) {
+		[self.delegate locationTracker:self didChangeAuthorizationStatus:status];
 	}
 	
 	if (self.authorisationCallback != nil) {

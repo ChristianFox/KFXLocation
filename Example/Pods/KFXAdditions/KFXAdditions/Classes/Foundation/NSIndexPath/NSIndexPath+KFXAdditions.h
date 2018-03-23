@@ -1,8 +1,8 @@
 /********************************
  *
- * Copyright © 2016-2017 Christian Fox
- * All Rights Reserved
- * Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
+ * Copyright © 2016-2018 Christian Fox
+ *
+ * MIT Licence - Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
  *
  * This file is included with KFXAdditions
  *
@@ -33,6 +33,18 @@
 							 toRow:(NSInteger)endRow
 						 inSection:(NSInteger)section;
 
+/**
+ 
+ Ripped from iOSKit http://foundationk.it
+ 
+ This method returns an array of indexPaths in the same section.
+ The row index starts with startItem (including) and ends with endItem (including).
+ 
+ @param startItem the item-index to start
+ @param endItem the item-index to end
+ @param section the section index of the indexPaths
+ @return an array of indexPaths in the given section, starting from startItem to endItem
+ */
 + (NSArray<NSIndexPath*>*)kfx_indexPathsFromItem:(NSInteger)startItem
 										  toItem:(NSInteger)endItem
 									  inSection:(NSInteger)section;

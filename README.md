@@ -1,6 +1,5 @@
 # KFXLocation
 
-[![CI Status](http://img.shields.io/travis/ChristianFox/KFXLocation.svg?style=flat)](https://travis-ci.org/ChristianFox/KFXLocation)
 [![Version](https://img.shields.io/cocoapods/v/KFXLocation.svg?style=flat)](http://cocoapods.org/pods/KFXLocation)
 [![License](https://img.shields.io/cocoapods/l/KFXLocation.svg?style=flat)](http://cocoapods.org/pods/KFXLocation)
 [![Platform](https://img.shields.io/cocoapods/p/KFXLocation.svg?style=flat)](http://cocoapods.org/pods/KFXLocation)

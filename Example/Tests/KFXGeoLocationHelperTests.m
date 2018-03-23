@@ -4,7 +4,7 @@
 #import <XCTest/XCTest.h>
 #import <KFXLocation/KFXGeoLocationHelper.h>
 #import <KFXUtilities/KFXMaths.h>
-#import <KFXUtilities/KFXCommonConstants.h>
+#import <KFXCore/KFXCommonConstants.h>
 
 @interface KFXGeoLocationHelperTests : XCTestCase
 @property (strong,nonatomic) KFXGeoLocationHelper *sut;
@@ -113,7 +113,7 @@
 -(void)testCoordinatesWithMetresAdjustment_WithInvalidLatitude_ShouldReturnInvalid{
     
     CLLocationCoordinate2D originalCoord = CLLocationCoordinate2DMake(0.0, 0.0);
-    double latAdjust = 90.1*kMetresPerDegreeLatitude;
+    double latAdjust = 90.1*KFXCOREMetresPerDegreeLatitude;
     double longAdjust = 100.0;
     CLLocationCoordinate2D newCoord = [self.sut coordinatesFromCoordinates:originalCoord
                                             withLatitudeAdjustmentByMetres:latAdjust
@@ -125,7 +125,7 @@
     
     CLLocationCoordinate2D originalCoord = CLLocationCoordinate2DMake(0.0, 0.0);
     double latAdjust = 10.0;
-    double longAdjust = 180.1*kMetresPerDegreeLongitude;
+    double longAdjust = 180.1*KFXCOREMetresPerDegreeLongitude;
     CLLocationCoordinate2D newCoord = [self.sut coordinatesFromCoordinates:originalCoord
                                             withLatitudeAdjustmentByMetres:latAdjust
                                                longitudeAdjustmentByMetres:longAdjust];
@@ -135,8 +135,8 @@
 -(void)testCoordinatesWithMetresAdjustment_WithValidPositiveArguments_ShouldReturnValidCoordinates{
     
     CLLocationCoordinate2D originalCoord = CLLocationCoordinate2DMake(0.0, 0.0);
-    double latAdjust = 89.9*kMetresPerDegreeLatitude;
-    double longAdjust = 179.9*kMetresPerDegreeLongitude;
+    double latAdjust = 89.9*KFXCOREMetresPerDegreeLatitude;
+    double longAdjust = 179.9*KFXCOREMetresPerDegreeLongitude;
     CLLocationCoordinate2D newCoord = [self.sut coordinatesFromCoordinates:originalCoord
                                             withLatitudeAdjustmentByMetres:latAdjust
                                                longitudeAdjustmentByMetres:longAdjust];
@@ -146,8 +146,8 @@
 -(void)testCoordinatesWithMetresAdjustment_WithValidNegativeArguments_ShouldReturnValidCoordinates{
     
     CLLocationCoordinate2D originalCoord = CLLocationCoordinate2DMake(0.0, 0.0);
-    double latAdjust = -89.9*kMetresPerDegreeLatitude;
-    double longAdjust = -179.9*kMetresPerDegreeLongitude;
+    double latAdjust = -89.9*KFXCOREMetresPerDegreeLatitude;
+    double longAdjust = -179.9*KFXCOREMetresPerDegreeLongitude;
     CLLocationCoordinate2D newCoord = [self.sut coordinatesFromCoordinates:originalCoord
                                             withLatitudeAdjustmentByMetres:latAdjust
                                                longitudeAdjustmentByMetres:longAdjust];

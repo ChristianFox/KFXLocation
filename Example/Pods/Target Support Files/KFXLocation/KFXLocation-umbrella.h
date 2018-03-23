@@ -11,6 +11,7 @@
 #endif
 
 #import "KFXGeoLocationHelper.h"
+#import "KFXLocation.h"
 #import "KFXLocationTracker.h"
 
 FOUNDATION_EXPORT double KFXLocationVersionNumber;

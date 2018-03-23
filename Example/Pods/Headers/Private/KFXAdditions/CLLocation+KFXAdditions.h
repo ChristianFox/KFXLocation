@@ -1,0 +1,1 @@
+../../../KFXAdditions/KFXAdditions/Classes/CoreLocation/CLLocation+KFXAdditions.h

@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="whP-gf-Uak">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="whP-gf-Uak">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,9 +18,40 @@
                         <viewControllerLayoutGuide type="bottom" id="Mvr-aV-6Um"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TpU-gO-2f1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KC8-6f-HDb">
+                                <rect key="frame" x="104.5" y="48" width="165" height="30"/>
+                                <state key="normal" title="Open Apple Maps App 1"/>
+                                <connections>
+                                    <action selector="openAppleMapsApp1ButtonTapped:" destination="whP-gf-Uak" eventType="touchUpInside" id="W40-yQ-INi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAh-h6-A0r">
+                                <rect key="frame" x="104" y="99" width="167" height="30"/>
+                                <state key="normal" title="Open Apple Maps App 2"/>
+                                <connections>
+                                    <action selector="openAppleMapsApp2ButtonTapped:" destination="whP-gf-Uak" eventType="touchUpInside" id="xzA-WZ-cwk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8o-qy-1lg">
+                                <rect key="frame" x="100.5" y="160" width="174" height="30"/>
+                                <state key="normal" title="Open Google Maps App 1"/>
+                                <connections>
+                                    <action selector="openGoogleMapsApp1ButtonTapped:" destination="whP-gf-Uak" eventType="touchUpInside" id="F70-bi-6jS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="H8o-qy-1lg" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="6Fz-sx-edQ"/>
+                            <constraint firstItem="uAh-h6-A0r" firstAttribute="top" secondItem="KC8-6f-HDb" secondAttribute="bottom" constant="21" id="Nl8-9B-j3w"/>
+                            <constraint firstItem="KC8-6f-HDb" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="Pxb-Du-3XZ"/>
+                            <constraint firstItem="KC8-6f-HDb" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="28" id="q9g-Ol-pdH"/>
+                            <constraint firstItem="H8o-qy-1lg" firstAttribute="top" secondItem="uAh-h6-A0r" secondAttribute="bottom" constant="31" id="ucN-c6-amf"/>
+                            <constraint firstItem="uAh-h6-A0r" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="xMP-9e-9ec"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>

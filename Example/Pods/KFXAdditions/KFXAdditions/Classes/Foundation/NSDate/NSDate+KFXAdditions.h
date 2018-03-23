@@ -1,8 +1,8 @@
 /********************************
  *
- * Copyright © 2016-2017 Christian Fox
- * All Rights Reserved
- * Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
+ * Copyright © 2016-2018 Christian Fox
+ *
+ * MIT Licence - Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
  *
  * This file is included with KFXAdditions
  *
@@ -22,40 +22,83 @@
 //--------------------------------------------------------
 #pragma mark - Comparison Convience methods
 //--------------------------------------------------------
+/// Returns YES if the receiver is earlier than anotherDate, otherwise will return NO
 -(BOOL)kfx_isEarlierThanDate:(NSDate*)anotherDate;
+
+/// Returns YES if the receiver is later than anotherDate, otherwise will return NO
 -(BOOL)kfx_isLaterThanDate:(NSDate*)anotherDate;
+
+/// Returns YES if the receiver is earlier than or equal to anotherDate, otherwise will return NO
 -(BOOL)kfx_isEarlierThanOrEqualToDate:(NSDate*)anotherDate;
+
+/// Returns YES if the receiver is later than or equal to anotherDate, otherwise will return NO
 -(BOOL)kfx_isLaterThanOrEqualToDate:(NSDate*)anotherDate;
+
+/// Returns YES if the receiver is later than startDate and earlier than endDate, otherwise will return NO
 -(BOOL)kfx_isBetweenStartDate:(NSDate*)startDate andEndDate:(NSDate*)endDate;
 
 
 //--------------------------------------------------------
 #pragma mark Equality
 //--------------------------------------------------------
+/// Returns YES is the receiver's day value is equal to anotherDate's day value, otherwise will return NO
 -(BOOL)kfx_isDayEqualToDate:(NSDate*)anotherDate;
+
+/// Returns YES is the receiver's hour value is equal to anotherDate's hour value, otherwise will return NO
 -(BOOL)kfx_isHourEqualToDate:(NSDate*)anotherDate;
+
+/// Returns YES is the receiver's minute value is equal to anotherDate's minute value, otherwise will return NO
 -(BOOL)kfx_isMinuteEqualToDate:(NSDate*)anotherDate;
+
+/// Returns YES is the receiver's time (hour & minute, not seconds) value is equal to anotherDate's time value, otherwise will return NO
 -(BOOL)kfx_isTimeEqualToDate:(NSDate*)anotherDate;
+
+//--------------------------------------------------------
+#pragma mark Queries
+//--------------------------------------------------------
+/// Returns YES is the receiver takes place in today
+-(BOOL)kfx_isToday;
+
+/// Returns YES is the receiver takes place this month
+-(BOOL)kfx_isThisMonth;
+
+/// Returns YES is the receiver takes place this year
+-(BOOL)kfx_isThisYear;
+
 
 
 //--------------------------------------------------------
 #pragma mark Components/difference between dates
 //--------------------------------------------------------
-/// If the receiver is earlier than the otherDate then the return value will be negative.
+/**
+ * Determine the number of days between the receiver and otherDate
+ * @param otherDate The other date to compare with the reciever
+ * @param includeToday If YES the the return value will include 1 for the partial day if there is one
+ * @return The number of days between the receiver and the anotherDate parameter. If the receiver is earlier than anotherDate, the return value is negative. If anotherDate is nil, the results are undefined.
+ **/
 -(NSInteger)kfx_daysSinceDate:(NSDate*)otherDate
   includeCurrentIncompleteDay:(BOOL)includeToday;
 
-/// If the receiver is earlier than the otherDate then the return value will be negative.
+/**
+ * Determine the number of hours between the receiver and otherDate
+ * @param otherDate The other date to compare with the reciever
+ * @param includeToday If YES the the return value will include 1 for the partial day if there is one
+ * @return The number of hours between the receiver and the anotherDate parameter. If the receiver is earlier than anotherDate, the return value is negative. If anotherDate is nil, the results are undefined.
+ **/
 -(NSInteger)kfx_hoursSinceDate:(NSDate*)otherDate
   includeCurrentIncompleteHour:(BOOL)includeToday;
 
-/// Returns the number of hours since midnight of the receiver's date
+/**
+ * Determine the number of hours between the receiver and the previous midnight
+ * @return The number of hours between the receiver and the previous midnight. If the receiver is earlier than anotherDate, the return value is negative. If anotherDate is nil, the results are undefined.
+ **/
 -(NSInteger)hoursSinceMidnight;
 
 
 //--------------------------------------------------------
 #pragma mark Components
 //--------------------------------------------------------
+/// Returns the date components from the receiver using the current NSCalendar
 -(NSDateComponents*)kfx_currentCalendarDateComponents;
 
 //--------------------------------------------------------

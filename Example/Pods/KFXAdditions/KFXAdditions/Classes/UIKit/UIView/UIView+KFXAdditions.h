@@ -1,8 +1,8 @@
 /********************************
  *
- * Copyright © 2016-2017 Christian Fox
- * All Rights Reserved
- * Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
+ * Copyright © 2016-2018 Christian Fox
+ *
+ * MIT Licence - Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
  *
  * This file is included with KFXAdditions
  *
@@ -39,12 +39,14 @@
 //--------------------------------------------------------
 #pragma mark - First Responder
 //--------------------------------------------------------
+/// Returns a UIView that is the first responder
 -(UIView*)kfx_findFirstResponder;
 
 
 //--------------------------------------------------------
 #pragma mark - Border
 //--------------------------------------------------------
+/// Adds a border to the receiver
 -(void)kfx_addBorderWithRadius:(CGFloat)radius
 						 width:(CGFloat)borderWidth
 						colour:(UIColor*)colour;
@@ -58,8 +60,11 @@
 //--------------------------------------------------------
 #pragma mark Animation
 //--------------------------------------------------------
+/// Set the alpha value of the receiver to 0.0 before increasing its alpha value to 1.0 over time
 -(void)kfx_fadeInWithDuration:(NSTimeInterval)duration
                completion:(void(^)(BOOL))completion;
+
+/// Set the alpha value of the receiver to 1.0 before increasing its alpha value to 0.0 over time
 -(void)kfx_fadeOutWithDuration:(NSTimeInterval)duration
                 completion:(void(^)(BOOL))completion;
 
@@ -67,6 +72,7 @@
 //--------------------------------------------------------
 #pragma mark Images
 //--------------------------------------------------------
+/// Returns a UIImage representation of the receiver's layer
 -(UIImage*)kfx_imageRepresentation;
 
 

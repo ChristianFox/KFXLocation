@@ -1,15 +1,20 @@
 /********************************
  *
- * Copyright © 2016-2017 Christian Fox
- * All Rights Reserved
- * Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
+ * Copyright © 2016-2018 Christian Fox
+ *
+ * MIT Licence - Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
  *
  * This file is included with KFXLocation
  *
  ************************************/
 
+
+
 #import <Foundation/Foundation.h>
 @import CoreLocation;
+@import MapKit;
+#import <KFXCore/KFXCore.h>
+
 
 NS_ASSUME_NONNULL_BEGIN
 @interface KFXGeoLocationHelper : NSObject
@@ -184,6 +189,36 @@ NS_ASSUME_NONNULL_BEGIN
                   ascending:(BOOL)ascending
                   distances:(NSArray<NSNumber*>*__autoreleasing  _Nonnull*_Nonnull)distances;
 
+
+//--------------------------------------------------------
+#pragma mark Apple Maps App
+//--------------------------------------------------------
+/**
+ * Open the Maps app showing directions from the user's current location to the given location using the given direction mode.
+ * @param location The CLLocation which is the destination
+ * @param directionsMode A MKLaunchOptionsDirectionsMode
+ * @param completionBlock The completionBlock which reports success and an NSError if it occurs
+ **/
+-(void)openAppleMapsAppWithDirectionsToLocation:(CLLocation*)location
+                            directionsMode:(NSString*)directionsMode
+                           completionBlock:(KFXSuccessResultBlock)completionBlock;
+
+/**
+ * Open the Maps app showing directions from the user's current location to the given location using the given options
+ * @param location The CLLocation which is the destination
+ * @param mapLaunchOptions The MKLaunchOptions
+ * @param completionBlock The completionBlock which reports success and an NSError if it occurs
+ **/
+-(void)openAppleMapsAppWithDirectionsToLocation:(CLLocation*)location
+                          mapLaunchOptions:(NSDictionary<NSString*,NSString*>*)mapLaunchOptions
+                           completionBlock:(KFXSuccessResultBlock)completionBlock;
+
+//--------------------------------------------------------
+#pragma mark Google Maps App
+//--------------------------------------------------------
+-(void)openGoogleMapsAppWithDirectionsToLocation:(CLLocation*)location
+                                  directionsMode:(NSString*)directionsMode
+                             completionBlock:(KFXBooleanResultBlock)completionBlock;
 
 
 @end

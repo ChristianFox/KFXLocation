@@ -1,0 +1,1 @@
+../../../KFXAdditions/KFXAdditions/Classes/UIKit/UIImage/UIImage+KFXAdditions.h

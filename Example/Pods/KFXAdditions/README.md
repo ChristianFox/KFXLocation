@@ -1,6 +1,5 @@
 # KFXAdditions
 
-[![CI Status](http://img.shields.io/travis/Christian Fox/KFXAdditions.svg?style=flat)](https://travis-ci.org/Christian Fox/KFXAdditions)
 [![Version](https://img.shields.io/cocoapods/v/KFXAdditions.svg?style=flat)](http://cocoapods.org/pods/KFXAdditions)
 [![License](https://img.shields.io/cocoapods/l/KFXAdditions.svg?style=flat)](http://cocoapods.org/pods/KFXAdditions)
 [![Platform](https://img.shields.io/cocoapods/p/KFXAdditions.svg?style=flat)](http://cocoapods.org/pods/KFXAdditions)
@@ -20,9 +19,16 @@ it, simply add the following line to your Podfile:
 pod "KFXAdditions"
 ```
 
+## Overview
+
+Various categories of Cocoa/Touch classes including classes from UIKit, Foundation and CoreLocation.
+
+
+## Note
+
 ## Author
 
-Christian Fox, christianfox890@icloud.com
+Christian Fox, christianfox@kfxtech.com
 
 ## License
 

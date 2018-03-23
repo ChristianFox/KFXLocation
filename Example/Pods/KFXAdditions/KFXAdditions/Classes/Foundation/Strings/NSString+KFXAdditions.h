@@ -1,8 +1,8 @@
 /********************************
  *
- * Copyright © 2016-2017 Christian Fox
- * All Rights Reserved
- * Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
+ * Copyright © 2016-2018 Christian Fox
+ *
+ * MIT Licence - Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
  *
  * This file is included with KFXAdditions
  *
@@ -86,6 +86,17 @@ NS_ASSUME_NONNULL_BEGIN
  **/
 -(NSUInteger)kfx_indexOfLastSubstring:(NSString*)substring;
 
+
+/*
+ TODO: -kfx_matchPercentageWithOtherString:
+ */
+/**
+ * @brief Calculate the percentage of characters in the otherString that match with the receiver
+ * @param otherString An NSString to compare with the receiver
+ * @return A value between 0.0 & 1.0 representing the percentage of matching characters
+ **/
+-(CGFloat)kfx_matchPercentageWithOtherString:(NSString*)otherString;
+
 //--------------------------------------------------------
 #pragma mark - New String with edits
 //--------------------------------------------------------
@@ -110,15 +121,20 @@ NS_ASSUME_NONNULL_BEGIN
 /// Prepares a telephone number for being called
 -(NSString*)kfx_cleanTelephoneNumber;
 
+
 //--------------------------------------------------------
 #pragma mark - Attributed String
 //--------------------------------------------------------
+/// Returns an NSAttributedString with the string set to the receiver and no attributes
 -(NSAttributedString *)kfx_attributedString;
+
+/// Returns an NSAttributedString with the string set to the receiver and with the given attributes
 -(NSAttributedString *)kfx_attributedStringWithAttributes:(NSDictionary *)attributes;
 
 //--------------------------------------------------------
 #pragma mark - Ranges
 //--------------------------------------------------------
+/// Returns the NSRange for the receiver
 -(NSRange)kfx_rangeOfString;
 
 

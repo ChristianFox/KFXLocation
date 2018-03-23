@@ -1,15 +1,19 @@
 /********************************
  *
- * Copyright © 2016-2017 Christian Fox
- * All Rights Reserved
- * Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
+ * Copyright © 2016-2018 Christian Fox
+ *
+ * MIT Licence - Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
  *
  * This file is included with KFXLocation
  *
  ************************************/
 
+
+
+
 #import "KFXGeoLocationHelper.h"
 #import <KFXCore/KFXCore.h>
+#import <KFXAdditions/UIApplication+KFXAdditions.h>
 
 @implementation KFXGeoLocationHelper
 
@@ -48,8 +52,8 @@
                      withLatitudeAdjustmentByMetres:(double)latitudeAdjustment
                         longitudeAdjustmentByMetres:(double)longitudeAdjustment{
     
-    CLLocationDegrees latDegrees = latitudeAdjustment * kDegreesPerMetreLatitude;
-    CLLocationDegrees longDegrees = longitudeAdjustment * kDegreesPerMetreLongitude;
+    CLLocationDegrees latDegrees = latitudeAdjustment * KFXCOREDegreesPerMetreLatitude;
+    CLLocationDegrees longDegrees = longitudeAdjustment * KFXCOREDegreesPerMetreLongitude;
     return [self coordinatesFromCoordinates:originalCoordinates
             withLatitudeAdjustmentByDegrees:latDegrees
                longitudeAdjustmentByDegrees:longDegrees];
@@ -140,11 +144,11 @@
     double earthRadius = 6371.01; // Earth's radius in Kilometers
     
     // Get the difference between our two points then convert the difference into radians
-    double nDLat = (coordA.latitude - coordB.latitude) * kDegreesToRadians;
-    double nDLon = (coordA.longitude - coordB.longitude) * kDegreesToRadians;
+    double nDLat = (coordA.latitude - coordB.latitude) * KFXCOREDegreesToRadians;
+    double nDLon = (coordA.longitude - coordB.longitude) * KFXCOREDegreesToRadians;
     
-    double fromLat =  coordB.latitude * kDegreesToRadians;
-    double toLat =  coordA.latitude * kDegreesToRadians;
+    double fromLat =  coordB.latitude * KFXCOREDegreesToRadians;
+    double toLat =  coordA.latitude * KFXCOREDegreesToRadians;
     
     double nA =	pow ( sin(nDLat/2), 2 ) + cos(fromLat) * cos(toLat) * pow ( sin(nDLon/2), 2 );
     
@@ -381,6 +385,75 @@
 }
 
 
+
+//--------------------------------------------------------
+#pragma mark Apple Maps App
+//--------------------------------------------------------
+-(void)openAppleMapsAppWithDirectionsToLocation:(CLLocation*)location
+                            directionsMode:(NSString*)directionsMode
+                           completionBlock:(KFXSuccessResultBlock)completionBlock{
+    
+    if (location == nil || directionsMode == nil || directionsMode.length == 0) {
+        completionBlock(NO,nil);
+        return;
+    }
+    
+    [self openAppleMapsAppWithDirectionsToLocation:location
+                             mapLaunchOptions:@{MKLaunchOptionsDirectionsModeKey:directionsMode}
+                              completionBlock:completionBlock];
+}
+
+-(void)openAppleMapsAppWithDirectionsToLocation:(CLLocation*)location
+                          mapLaunchOptions:(NSDictionary<NSString*,NSString*>*)mapLaunchOptions
+                           completionBlock:(KFXSuccessResultBlock)completionBlock{
+    
+    if (location == nil || mapLaunchOptions == nil || mapLaunchOptions.count == 0) {
+        completionBlock(NO,nil);
+        return;
+    }
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc]init];
+    [geocoder reverseGeocodeLocation:location
+                   completionHandler:^(NSArray<CLPlacemark*> *placemarks, NSError *error)
+     {
+         if (error != nil || placemarks.count == 0) {
+             completionBlock(NO,error);
+             return;
+         }
+         CLPlacemark *corePlacemark = placemarks.firstObject;
+         MKPlacemark *placemark = [[MKPlacemark alloc]initWithCoordinate:corePlacemark.location.coordinate addressDictionary:corePlacemark.addressDictionary];
+         MKMapItem *mapItem = [[MKMapItem alloc]initWithPlacemark:placemark];
+         BOOL success = [mapItem openInMapsWithLaunchOptions:mapLaunchOptions];
+         completionBlock(success,error);
+     }];
+}
+
+//--------------------------------------------------------
+#pragma mark Google Maps App
+//--------------------------------------------------------
+-(void)openGoogleMapsAppWithDirectionsToLocation:(CLLocation*)location
+                                  directionsMode:(NSString*)directionsMode
+                                 completionBlock:(KFXBooleanResultBlock)completionBlock{
+    NSURL *baseURL = [NSURL URLWithString:@"comgooglemaps://"];
+    if ([[UIApplication sharedApplication]canOpenURL:baseURL]) {
+        NSString *fullURLString = [NSString stringWithFormat:@"%@?saddr=&daddr=%f,%f&zoom=14&directionsmode=driving",baseURL.absoluteString,location.coordinate.latitude,location.coordinate.longitude];
+        NSURL *fullURL = [NSURL URLWithString:fullURLString];
+        [[UIApplication sharedApplication]kfx_openURL:fullURL options:@{} completionHandler:^(BOOL success) {
+            completionBlock(success);
+        }];
+
+    }else{
+        
+        NSString *fullURLString = [NSString stringWithFormat:@"https://maps.google.com/?saddr=&daddr=%f,%f",location.coordinate.latitude,location.coordinate.longitude];
+        NSURL *fullURL = [NSURL URLWithString:fullURLString];
+        [[UIApplication sharedApplication]kfx_openURL:fullURL options:@{} completionHandler:^(BOOL success) {
+            completionBlock(success);
+        }];
+
+        
+    }
+//    [UIApplication sharedApplication] kfx
+}
 
 @end
 

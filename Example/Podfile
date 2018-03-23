@@ -1,18 +1,13 @@
-use_frameworks!
+# use_frameworks!
+platform :ios, '8.0'
+
 
 target 'KFXLocation_Example' do
   pod 'KFXLocation', :path => '../'
-  
-  ## Sources
-  ### If using private pods
-  source 'https://bitbucket.org/kfx_pods/kfxsharedspecs.git'
-  
-  pod 'KFXAdditions'
+    
   pod 'KFXCore'
-  
-  ### If using from trunk
-  source 'http://github.com/Cocoapods/Specs.git'
-
+  pod 'KFXAdditions'
+  pod 'KFXUtilities'
 
   target 'KFXLocation_Tests' do
     inherit! :search_paths

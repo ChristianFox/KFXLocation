@@ -1,8 +1,8 @@
 /********************************
  *
- * Copyright © 2016-2017 Christian Fox
- * All Rights Reserved
- * Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
+ * Copyright © 2016-2018 Christian Fox
+ *
+ * MIT Licence - Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
  *
  * This file is included with KFXAdditions
  *
@@ -22,12 +22,23 @@
 	return [self kfx_isLessThanNumber:anotherNumber] ? self : anotherNumber;
 }
 
+/// Returns the lowest number from the array of numbers
++(NSNumber *)kfx_lowestNumberFromNumbers:(NSArray<NSNumber*>*)otherNumbers{
+    
+    NSArray *sorted = [otherNumbers sortedArrayUsingSelector:@selector(compare:)];
+    return sorted.firstObject;
+}
 
 /// Returns the highest number out of the receiver and anotherNumber
 - (NSNumber *)kfx_highestNumber:(NSNumber *)anotherNumber{
 	return [self kfx_isGreaterThanNumber:anotherNumber] ? self : anotherNumber;
 }
 
+/// Returns the highest number from the array of numbers
++(NSNumber *)kfx_highestNumberFromNumbers:(NSArray<NSNumber*>*)otherNumbers{
+    NSArray *sorted = [otherNumbers sortedArrayUsingSelector:@selector(compare:)];
+    return sorted.lastObject;
+}
 
 /// Returns YES if the receiver == anotherNumber
 -(BOOL)kfx_isEqualToNumber:(NSNumber *)anotherNumber{
