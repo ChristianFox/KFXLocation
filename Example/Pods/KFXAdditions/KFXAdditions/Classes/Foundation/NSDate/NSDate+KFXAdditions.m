@@ -45,6 +45,18 @@
     }
 }
 
+-(BOOL)kfx_isCloseToDate:(NSDate *)anotherDate withinSeconds:(NSTimeInterval)seconds{
+    
+    NSTimeInterval positiveSeconds = seconds;
+    if (positiveSeconds < 0) {
+        positiveSeconds = -positiveSeconds;
+    }
+    NSDate *early = [anotherDate dateByAddingTimeInterval:-positiveSeconds];
+    NSDate *late = [anotherDate dateByAddingTimeInterval:positiveSeconds];
+    return [self kfx_isBetweenStartDate:early andEndDate:late];
+}
+
+
 
 //--------------------------------------------------------
 #pragma mark - Equality
@@ -206,9 +218,10 @@
 //--------------------------------------------------------
 -(NSDateComponents*)kfx_currentCalendarDateComponents {
 	
-	NSCalendar *calendar = [NSCalendar currentCalendar];
-	
-	return [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitWeekday | NSCalendarUnitWeekOfMonth| NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond fromDate:self];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitWeekday | NSCalendarUnitWeekOfMonth| NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond fromDate:self];
+    components.calendar = calendar;
+    return components;
 }
 
 
@@ -241,6 +254,10 @@
     return [[NSCalendar currentCalendar] dateFromComponents:components];
 }
 
+-(NSDate *)kfx_midnight{
+    
+    return [self kfx_dateWithHour:0 minute:0 second:0];
+}
 
 
 @end

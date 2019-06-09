@@ -21,4 +21,11 @@
     return NO;
 }
 
+-(void)kfx_removeObjectsMatchingPredicate:(NSPredicate *)pred{
+    
+    NSArray *matching = [self filteredArrayUsingPredicate:pred];
+    [self removeObjectsInArray:matching];
+}
+
+
 @end

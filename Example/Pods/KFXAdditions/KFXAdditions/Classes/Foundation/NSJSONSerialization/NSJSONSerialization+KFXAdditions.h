@@ -8,14 +8,14 @@
  *
  ************************************/
 
-
 #import <Foundation/Foundation.h>
 
-@interface NSURL (KFXAdditions)
+@interface NSJSONSerialization (KFXAdditions)
 
-/// Returns the keys and values of the parameters from the url
--(NSDictionary<NSString*,NSString*>*)kfx_queryParameters;
 
-+(NSURL*)kfx_urlFromHTMLString:(NSString*)htmlString withError:(NSError**)error;
++ (NSString *)kfx_JSONStringWithJSONObject:(id)JSONObject options:(NSJSONWritingOptions)opt error:(NSError **)error;
+
++ (id)kfx_JSONObjectWithString:(NSString*)string options:(NSJSONReadingOptions)opt error:(NSError **)error;
+
 
 @end

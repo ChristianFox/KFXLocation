@@ -155,4 +155,34 @@
 	return NSMakeRange(0, self.string.length);
 }
 
+//------------------------
+#pragma mark HTML
+//------------------------
++(instancetype)kfx_attributedStringFromHTMLString:(NSString *)htmlString error:(NSError**)error{
+    
+    NSData *data = [htmlString dataUsingEncoding:NSUnicodeStringEncoding];
+    NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
+    return [[NSAttributedString alloc]initWithData:data
+                                           options:options
+                                documentAttributes:nil
+                                             error:error];
+}
+
++(instancetype)kfx_attributedStringFromHTMLString:(NSString *)htmlString withFont:(UIFont*)font foregroundColour:(UIColor*)fgColour error:(NSError**)error{
+    
+    NSMutableAttributedString *mutAttString = [[self kfx_attributedStringFromHTMLString:htmlString error:error] mutableCopy];
+    if (mutAttString == nil) {
+        return nil;
+    }
+    
+    [mutAttString addAttribute:NSFontAttributeName value:font range:[mutAttString kfx_rangeOfString]];
+    [mutAttString addAttribute:NSForegroundColorAttributeName value:fgColour range:[mutAttString kfx_rangeOfString]];
+    return mutAttString.copy;
+
+}
+
+
+
+
+
 @end

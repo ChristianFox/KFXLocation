@@ -20,7 +20,7 @@
 @interface NSDate (KFXAdditions)
 
 //--------------------------------------------------------
-#pragma mark - Comparison Convience methods
+#pragma mark - Comparison 
 //--------------------------------------------------------
 /// Returns YES if the receiver is earlier than anotherDate, otherwise will return NO
 -(BOOL)kfx_isEarlierThanDate:(NSDate*)anotherDate;
@@ -37,6 +37,8 @@
 /// Returns YES if the receiver is later than startDate and earlier than endDate, otherwise will return NO
 -(BOOL)kfx_isBetweenStartDate:(NSDate*)startDate andEndDate:(NSDate*)endDate;
 
+/// Returns YES if the receiver is within seconds of anotherDate (earlier or later)
+-(BOOL)kfx_isCloseToDate:(NSDate *)anotherDate withinSeconds:(NSTimeInterval)seconds;
 
 //--------------------------------------------------------
 #pragma mark Equality
@@ -112,6 +114,9 @@
 
 /// Create a new date with the receiver's month and year but updating the hour, minute and second to the given values and adding the days value
 -(NSDate*)kfx_dateByAddingDays:(NSInteger)days withHour:(NSInteger)hour minute:(NSInteger)min second:(NSInteger)sec;
+
+/// Create a new date set to midnight
+-(NSDate*)kfx_midnight;
 
 
 @end

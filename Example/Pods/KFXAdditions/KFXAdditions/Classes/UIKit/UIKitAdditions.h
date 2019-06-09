@@ -20,6 +20,7 @@
 #import <KFXAdditions/UIButton+KFXAdditions.h>
 #import <KFXAdditions/UIColor+KFXAdditions.h>
 #import <KFXAdditions/UIFont+KFXAdditions.h>
+#import <KFXAdditions/UINavigationController+KFXAdditions.h>
 #import <KFXAdditions/UIImage+KFXAdditions.h>
 #import <KFXAdditions/UIImageView+KFXAdditions.h>
 #import <KFXAdditions/UIResponder+KFXAdditions.h>

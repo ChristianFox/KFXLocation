@@ -2,8 +2,8 @@
   "name": "KFXLocation",
   "version": "0.5.0",
   "summary": "KFXLocation pod",
-  "description": "Location Tracker (manager), helper methods",
-  "homepage": "https://github.com/ChristianFox/KFXLocationManager.git",
+  "description": "CoreLocation wrapper / helpers.",
+  "homepage": "https://github.com/ChristianFox/KFXLocation.git",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,7 +12,7 @@
     "ChristianFox": "christianfox890@icloud.com"
   },
   "source": {
-    "git": "https://github.com/ChristianFox/KFXLocationManager.git",
+    "git": "https://github.com/ChristianFox/KFXLocation.git",
     "tag": "0.5.0"
   },
   "platforms": {

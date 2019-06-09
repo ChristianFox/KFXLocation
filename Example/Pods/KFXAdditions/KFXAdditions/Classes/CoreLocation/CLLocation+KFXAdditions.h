@@ -8,6 +8,7 @@
  *
  ************************************/
 
+
 #import <CoreLocation/CoreLocation.h>
 
 @interface CLLocation (KFXAdditions)
@@ -24,13 +25,21 @@
 +(instancetype)kfx_locationWithCoordinates:(CLLocationCoordinate2D)coordinates;
 
 /**
- * @brief Create a new CLLocation by combining the coordinates and adjusting the with given coordinates
+ * @brief Create a new CLLocation with latitude and longitude set from the coordinates found in coordStr
+ * @param coordStr An NSString containing two coordinates separated using the same symbol/s as specified in sepStr
+ * @param sepStr An NSString which should match the symbol/s used to separate latitude and longitude in coordStr
+ * @return A new CLLocation. If any of the arguments are invalid then nil will be returned.
+ **/
++(instancetype)kfx_locationFromString:(NSString*)coordStr withSeparator:(NSString*)sepStr;
+
+/**
+ * @brief Create a new CLLocation by combining the coordinates and adjusting them with given coordinates
  * @param latitudeAdjustment The latitude in degrees to adjust the originalCoordinates by
  * @param longitudeAdjustment The longitude in degrees to adjust the originalCoordinates by
  * @return A new CLLocation. If any of the combined values are invalid then nil will be returned.
  **/
 -(instancetype)locationByAdjustingCoordinatesInDegreesWithLatitude:(CLLocationDegrees)latitudeAdjustment
-                                            longitude:(CLLocationDegrees)longitudeAdjustment;
+                                                         longitude:(CLLocationDegrees)longitudeAdjustment;
 
 /**
  * @brief Create a new CLLocation by combining the coordinates and adjusting the with given coordinates
@@ -39,7 +48,9 @@
  * @return A new CLLocation. If any of the combined values are invalid then nil will be returned.
  **/
 -(instancetype)locationByAdjustingCoordinatesInMetresWithLatitude:(double)latitudeAdjustment
-                                           longitude:(double)longitudeAdjustment;
+                                                        longitude:(double)longitudeAdjustment;
+
+
 
 
 //--------------------------------------------------------

@@ -10,6 +10,7 @@
 
 
 #import "NSURL+KFXAdditions.h"
+#import "NSString+KFXAdditions.h"
 
 @implementation NSURL (KFXAdditions)
 
@@ -29,5 +30,24 @@
     }
     return dict;
 }
+
++(NSURL*)kfx_urlFromHTMLString:(NSString*)htmlString withError:(NSError *__autoreleasing *)error{
+    
+    NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:error];
+    if (detector == nil) {
+        return nil;
+    }
+    NSArray *matches = [detector matchesInString:htmlString
+                                         options:0
+                                           range:[htmlString kfx_rangeOfString]];
+    for (NSTextCheckingResult *match in matches) {
+        if ([match resultType] == NSTextCheckingTypeLink) {
+            NSURL *url = [match URL];
+            return url;
+        }
+    }
+    return nil;
+}
+
 
 @end

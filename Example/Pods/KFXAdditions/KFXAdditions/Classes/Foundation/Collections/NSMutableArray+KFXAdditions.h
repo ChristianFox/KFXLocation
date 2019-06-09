@@ -22,5 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
  **/
 -(BOOL)kfx_addObject:(id __nullable)object;
 
+/// Removes any objects from the receiver that match the given predicate
+-(void)kfx_removeObjectsMatchingPredicate:(NSPredicate*)pred;
+
+
 @end
 NS_ASSUME_NONNULL_END

@@ -144,11 +144,11 @@
     double earthRadius = 6371.01; // Earth's radius in Kilometers
     
     // Get the difference between our two points then convert the difference into radians
-    double nDLat = (coordA.latitude - coordB.latitude) * KFXCOREDegreesToRadians;
-    double nDLon = (coordA.longitude - coordB.longitude) * KFXCOREDegreesToRadians;
+    double nDLat = (coordA.latitude - coordB.latitude) * KFXCOREDegreesPerRadian;
+    double nDLon = (coordA.longitude - coordB.longitude) * KFXCOREDegreesPerRadian;
     
-    double fromLat =  coordB.latitude * KFXCOREDegreesToRadians;
-    double toLat =  coordA.latitude * KFXCOREDegreesToRadians;
+    double fromLat =  coordB.latitude * KFXCOREDegreesPerRadian;
+    double toLat =  coordA.latitude * KFXCOREDegreesPerRadian;
     
     double nA =	pow ( sin(nDLat/2), 2 ) + cos(fromLat) * cos(toLat) * pow ( sin(nDLon/2), 2 );
     

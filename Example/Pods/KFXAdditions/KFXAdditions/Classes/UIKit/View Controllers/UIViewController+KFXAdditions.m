@@ -9,8 +9,10 @@
  ************************************/
 
 #import "UIViewController+KFXAdditions.h"
+@import SafariServices;
 // Other Categories
 #import "UIAlertController+KFXAdditions.h"
+#import "UIApplication+KFXAdditions.h"
 
 @implementation UIViewController (KFXAdditions)
 
@@ -57,28 +59,58 @@
 //--------------------------------------------------------
 -(BOOL)kfx_hasBeenPresentedModally{
 	
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    BOOL isModal = ((self.parentViewController && self.parentViewController.modalViewController == self) ||
+    BOOL isModal;// = ((self.parentViewController && self.parentViewController.presentedViewController == self) ||
                     //or if I have a navigation controller, check if its parent modal view controller is self navigation controller
-                    ( self.navigationController && self.navigationController.parentViewController && self.navigationController.parentViewController.modalViewController == self.navigationController) ||
-                    //or if the parent of my UITabBarController is also a UITabBarController class, then there is no way to do that, except by using a modal presentation
-                    [[[self tabBarController] parentViewController] isKindOfClass:[UITabBarController class]]);
+//                    ( self.navigationController && self.navigationController.parentViewController && self.navigationController.parentViewController.presentedViewController == self.navigationController) ||
+//                    //or if the parent of my UITabBarController is also a UITabBarController class, then there is no way to do that, except by using a modal presentation
+//                    [[[self tabBarController] parentViewController] isKindOfClass:[UITabBarController class]]);
+//
     
-    //iOS 5+
-    if (!isModal && [self respondsToSelector:@selector(presentingViewController)]) {
-        
-        isModal = ((self.presentingViewController && self.presentingViewController.modalViewController == self) ||
+//    if ([self respondsToSelector:@selector(presentingViewController)]) {
+    
+        isModal = ((self.presentingViewController && self.presentingViewController.presentedViewController == self) ||
                    //or if I have a navigation controller, check if its parent modal view controller is self navigation controller
-                   (self.navigationController && self.navigationController.presentingViewController && self.navigationController.presentingViewController.modalViewController == self.navigationController) ||
+                   (self.navigationController && self.navigationController.presentingViewController && self.navigationController.presentingViewController.presentedViewController == self.navigationController) ||
                    //or if the parent of my UITabBarController is also a UITabBarController class, then there is no way to do that, except by using a modal presentation
                    [[[self tabBarController] presentingViewController] isKindOfClass:[UITabBarController class]]);
         
-    }
-#pragma clang diagnostic pop
-
+//    }
     return isModal;
 }
+
+-(void)kfx_presentWebPageWithURLString:(NSString *)urlString completion:(void (^)(BOOL))completionBlock{
+    
+    if (urlString == nil){
+        
+        NSString *message = [NSString stringWithFormat:@"Unable to open the web page because url is nil"];
+        [self kfx_showErrorAlertWithMessage:message];
+        completionBlock(NO);
+        return;
+    }
+    NSURL *url = [NSURL URLWithString:urlString];
+    [self kfx_presentWebPageWithURL:url completion:completionBlock];
+}
+
+-(void)kfx_presentWebPageWithURL:(NSURL *)url completion:(void (^)(BOOL))completionBlock{
+    if (url == nil){
+        NSString *message = [NSString stringWithFormat:@"Unable to open the web page because url is nil"];
+        [self kfx_showErrorAlertWithMessage:message];
+        completionBlock(NO);
+        return;
+    }
+    if (@available(iOS 9.0, *)) {
+        SFSafariViewController *safariVC = [[SFSafariViewController alloc]initWithURL:url];
+        [self presentViewController:safariVC animated:YES completion:^{
+            completionBlock(YES);
+        }];
+    } else {
+        // Fallback on earlier versions
+        [[UIApplication sharedApplication] kfx_openURL:url options:@{} completionHandler:^(BOOL success) {
+            completionBlock(success);
+        }];
+    }
+}
+
 
 //--------------------------------------------------------
 #pragma mark Alerts
@@ -154,6 +186,23 @@
                            buttonTitle:NSLocalizedString(@"Okay", @"Okay / agree / accept")
                       buttonCompletion:completionBlock];
     
+}
+
+-(void)kfx_showOpenSettingsAlertWithTitle:(NSString *)title message:(NSString *)message completion:(void (^)(BOOL))completionBlock{
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Not Now" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        completionBlock(NO);
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"Open Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        [[UIApplication sharedApplication] kfx_openURL:url options:@{} completionHandler:^(BOOL success) {
+                completionBlock(success);
+        }];
+    }]];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+
 }
 
 //--------------------------------------------------------

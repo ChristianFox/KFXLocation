@@ -70,4 +70,11 @@
 /// Returns the NSRange for the receiver's string
 -(NSRange)kfx_rangeOfString;
 
+//------------------------
+#pragma mark HTML
+//------------------------
++(instancetype)kfx_attributedStringFromHTMLString:(NSString *)htmlString error:(NSError**)error;
++(instancetype)kfx_attributedStringFromHTMLString:(NSString *)htmlString withFont:(UIFont*)font foregroundColour:(UIColor*)fgColour error:(NSError**)error;
+
+
 @end

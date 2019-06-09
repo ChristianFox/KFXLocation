@@ -19,8 +19,12 @@
 //======================================================
 #pragma mark - ** Class Methods **
 //======================================================
-
 +(NSString*)kfx_randomStringOfLength:(int)length withStringComponents:(KFXStringComponent)components{
+    
+    return [self kfx_randomStringOfLength:length withStringComponents:components andCharacterPool:nil];
+}
+
++(NSString *)kfx_randomStringOfLength:(int)length withStringComponents:(KFXStringComponent)components andCharacterPool:(NSString *)additionalCharacters{
     
     NSMutableString *characterPool = [[NSMutableString alloc]init];
     if (components == KFXStringComponentNone) {
@@ -28,29 +32,32 @@
         return nil;
         
     }
-	if (components & KFXStringComponentAlpha){
+    if (components & KFXStringComponentAlpha){
         
         [characterPool appendString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"];
         
     }
- 
-	if (components & KFXStringComponentNumerical){
+    
+    if (components & KFXStringComponentNumerical){
         
         [characterPool appendString:@"0123456789"];
-    
+        
     }
- 
-	if (components & KFXStringComponentSymbolsCommon){
     
+    if (components & KFXStringComponentSymbolsCommon){
+        
         [characterPool appendString:@"<>!@£$%%&*€#?+-=_"];
         
     }
- 
-	if (components & KFXStringComponentSymbolsExtensive){
+    
+    if (components & KFXStringComponentSymbolsExtensive){
         
         [characterPool appendString:@"§±!@£$%%^&*()_+=-€#¡¢∞§¶•ªº–≠œ∑®®†¥¨^øπ“‘«æ…¬˚∆˙©ƒ∂ßåΩ≈ç√∫~µ≤≥÷?><,./;'\\[]}{|\":`~"];
     }
     
+    if (additionalCharacters != nil) {
+        [characterPool appendString:additionalCharacters];
+    }
     return [self kfx_randomStringOfLength:length fromCharacterPool:[characterPool copy]];
 }
 
@@ -292,12 +299,28 @@
 
 
 //--------------------------------------------------------
-#pragma mark - Ranges
+#pragma mark - Get/Create from String
 //--------------------------------------------------------
 -(NSRange)kfx_rangeOfString{
 	return NSMakeRange(0, self.length);
 }
 
+-(NSArray *)kfx_initials{
+    NSArray *words = [self componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSMutableArray *mutArray = [NSMutableArray arrayWithCapacity:words.count];
+    for (NSString *word in words) {
+        if ([word length] >= 1) {
+            NSString *firstLetter = [word substringToIndex:1];
+            [mutArray addObject:firstLetter];
+        }
+    }
+    return mutArray.copy;
+}
+
+-(NSString *)kfx_firstInitial{
+    NSString *firstInitial = [self substringToIndex:1];
+    return firstInitial;
+}
 
 
 @end

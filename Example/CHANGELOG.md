@@ -1,6 +1,10 @@
 
 # ChangeLog - KFXLocation
 
+### v0.6.0 | Wrapper methods + KFXCore update
+- Adds a bunch of wrapper methods to KFXLocationTracker
+- Updates KFXCore and uses of KFXCOREDegreesPerRadian
+
 ### v0.5.0 | Updates Licence, moves project to github, makes pod public
 
 ### v0.4.2

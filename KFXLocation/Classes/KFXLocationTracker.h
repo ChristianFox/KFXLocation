@@ -1,14 +1,12 @@
 /********************************
  *
- * Copyright © 2016-2018 Christian Fox
- *
- * MIT Licence - Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
+ * Copyright © 2016-2017 Christian Fox
+ * All Rights Reserved
+ * Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
  *
  * This file is included with KFXLocation
  *
  ************************************/
-
-
 
 // # Imports
 // Cocoa Frameworks
@@ -17,11 +15,11 @@
 
 // # Enums
 typedef NS_ENUM(NSInteger, KFXLocationRejectionReason) {
-	KFXLocationAccepted = -1,
-	KFXLocationRejectionReasonUndefined = 0,
-	KFXLocationRejectionReasonOlderThanLastKnownLocation,
-	KFXLocationRejectionReasonOlderThanMaxAge,
-	KFXLocationRejectionReasonLessAccurateThanMinAccuracy,
+    KFXLocationAccepted = -1,
+    KFXLocationRejectionReasonUndefined = 0,
+    KFXLocationRejectionReasonOlderThanLastKnownLocation,
+    KFXLocationRejectionReasonOlderThanMaxAge,
+    KFXLocationRejectionReasonLessAccurateThanMinAccuracy,
 };
 
 // # Block defintions
@@ -37,8 +35,13 @@ typedef void(^KFXLocationUpdatesBlock)(NSArray<CLLocation*> *locations);
 -(void)locationTracker:(KFXLocationTracker*)locationTracker didRejectLocation:(CLLocation*)location forReason:(KFXLocationRejectionReason)reason;
 -(void)locationTrackerDidPauseLocationUpdates:(KFXLocationTracker*)tracker;
 -(void)locationTrackerDidResumeLocationUpdates:(KFXLocationTracker*)tracker;
--(void)locationTracker:(KFXLocationTracker*)locationTracker didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
-
+-(void)locationTracker:(KFXLocationTracker*)locationTracker didChangeAuthrizationStatus:(CLAuthorizationStatus)status;
+-(void)locationTracker:(KFXLocationTracker*)locationTracker didEnterRegion:(CLRegion *)region;
+-(void)locationTracker:(KFXLocationTracker*)locationTracker didExitRegion:(CLRegion *)region;
+-(void)locationTracker:(KFXLocationTracker*)locationTracker didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region;
+-(void)locationTracker:(KFXLocationTracker*)locationTracker didStartMonitoringForRegion:(CLRegion *)region;
+-(void)locationTracker:(KFXLocationTracker*)locationTracker monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error;
+-(void)locationTracker:(KFXLocationTracker*)locationTracker didVisit:(CLVisit *)visit;
 @end
 
 // # Interface
@@ -65,7 +68,19 @@ typedef void(^KFXLocationUpdatesBlock)(NSArray<CLLocation*> *locations);
 
 /// Initilise an instance of KFXLocationTracker with the given desiredAccuracy and distanceFilter
 +(instancetype)locationTrackerWithDesiredAccuracy:(CLLocationAccuracy)accuracy
-								   distanceFilter:(CLLocationDistance)distance;
+                                   distanceFilter:(CLLocationDistance)distance;
+
+//--------------------------------------------------------
+#pragma mark CLLocationManager wrappers
+//--------------------------------------------------------
+-(void)startUpdatingLocation;
+-(void)stopUpdatingLocation;
+-(void)startMonitoringSignificantLocationChanges;
+-(void)stopMonitoringSignificantLocationChanges;
+-(void)startMonitoringVisits;
+-(void)stopMonitoringVisits;
+-(void)startMonitoringForRegion:(CLRegion *)region;
+-(void)stopMonitoringForRegion:(CLRegion *)region;
 
 //--------------------------------------------------------
 #pragma mark Blocks based API
@@ -91,3 +106,4 @@ typedef void(^KFXLocationUpdatesBlock)(NSArray<CLLocation*> *locations);
 
 
 @end
+

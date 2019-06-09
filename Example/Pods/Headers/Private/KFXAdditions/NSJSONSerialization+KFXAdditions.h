@@ -1,0 +1,1 @@
+../../../KFXAdditions/KFXAdditions/Classes/Foundation/NSJSONSerialization/NSJSONSerialization+KFXAdditions.h

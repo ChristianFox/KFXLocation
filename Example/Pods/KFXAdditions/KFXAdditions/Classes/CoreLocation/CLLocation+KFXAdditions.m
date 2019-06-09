@@ -24,12 +24,10 @@ double const k_MetresPerDegreeLongitude = 111319.2895857656;
 double const k_DegreesPerMetreLatitude = 0.0000090437;
 double const k_DegreesPerMetreLongitude = 0.0000089832;
 
-
 #import "CLLocation+KFXAdditions.h"
 #import "NSDate+KFXAdditions.h"
 
 @implementation CLLocation (KFXAdditions)
-
 
 
 //======================================================
@@ -46,6 +44,22 @@ double const k_DegreesPerMetreLongitude = 0.0000089832;
     
     CLLocation *location = [[CLLocation alloc]initWithLatitude:coordinates.latitude
                                                      longitude:coordinates.longitude];
+    return location;
+}
+
++(instancetype)kfx_locationFromString:(NSString *)coordStr withSeparator:(NSString *)sepStr{
+    
+    if (coordStr.length == 0 || coordStr.length < sepStr.length) {
+        return nil;
+    }
+    NSArray *components = [coordStr componentsSeparatedByString:sepStr];
+    if (components.count != 2) {
+        return nil;
+    }
+    CLLocationDegrees latitude = [components.firstObject doubleValue];
+    CLLocationDegrees longitude = [components.lastObject doubleValue];
+    CLLocation *location = [[CLLocation alloc]initWithLatitude:latitude
+                                                     longitude:longitude];
     return location;
 }
 
