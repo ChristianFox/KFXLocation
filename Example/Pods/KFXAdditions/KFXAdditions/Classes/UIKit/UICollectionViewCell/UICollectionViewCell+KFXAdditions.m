@@ -22,4 +22,19 @@
     return [[self kfx_collectionView] indexPathForCell:self];
 }
 
++(UINib *)kfx_nib{
+    
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([self class])
+                                bundle:[self kfx_bundle]];
+    return nib;
+}
+
++(NSString *)kfx_reuseIdentifier{
+    return NSStringFromClass([self class]);
+}
+
++(NSBundle *)kfx_bundle{
+    return [NSBundle bundleForClass:[self class]];
+}
+
 @end

@@ -20,10 +20,12 @@
 #import "NSMutableSet+KFXAdditions.h"
 #import "NSSet+KFXAdditions.h"
 #import "FoundationAdditions.h"
+#import "NSBundle+KFXAdditions.h"
 #import "NSDate+KFXAdditions.h"
 #import "NSError+KFXAdditions.h"
 #import "NSFileManager+KFXDirectoryLocations.h"
 #import "NSIndexPath+KFXAdditions.h"
+#import "NSJSONSerialization+KFXAdditions.h"
 #import "NSNumber+KFXAdditions.h"
 #import "NSObject+KFXAdditions.h"
 #import "NSURL+KFXAdditions.h"
@@ -41,6 +43,7 @@
 #import "UIImage+KFXAdditions.h"
 #import "UIImageView+KFXAdditions.h"
 #import "UIKitAdditions.h"
+#import "UINavigationController+KFXAdditions.h"
 #import "UIResponder+KFXAdditions.h"
 #import "UITableView+KFXAdditions.h"
 #import "UITableViewCell+KFXAdditions.h"
@@ -49,6 +52,7 @@
 #import "UICollectionViewController+KFXAdditions.h"
 #import "UITableViewController+KFXAdditions.h"
 #import "UIViewController+KFXAdditions.h"
+#import "MKMapView+KFXAdditions.h"
 
 FOUNDATION_EXPORT double KFXAdditionsVersionNumber;
 FOUNDATION_EXPORT const unsigned char KFXAdditionsVersionString[];

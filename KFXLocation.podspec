@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KFXLocation'
-  s.version          = '0.6.0'
+  s.version          = '0.7.0'
   s.summary          = 'KFXLocation pod'
   s.description      = <<-DESC
 CoreLocation wrapper / helpers.
@@ -13,7 +13,7 @@ CoreLocation wrapper / helpers.
   s.author           = { 'ChristianFox' => 'christianfox890@icloud.com' }
   s.source           = { :git => 'https://github.com/ChristianFox/KFXLocation.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'KFXLocation/Classes/**/*'
   s.dependency 'KFXAdditions'

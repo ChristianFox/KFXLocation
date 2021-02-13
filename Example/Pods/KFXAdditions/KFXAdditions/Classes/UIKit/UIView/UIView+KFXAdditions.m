@@ -47,7 +47,7 @@
 }
 
 -(CGFloat)top{
-    return self.x;
+    return self.y;
 }
 
 -(CGFloat)right{

@@ -166,6 +166,28 @@
     
 }
 
+- (UIColor *)kfx_combineWithColour:(UIColor *)otherColour amount:(CGFloat)amount {
+    
+    CGFloat thisRed = 0.0;
+    CGFloat thisGreen = 0.0;
+    CGFloat thisBlue = 0.0;
+    CGFloat otherRed = 0.0;
+    CGFloat otherGreen = 0.0;
+    CGFloat otherBlue = 0.0;
+    
+    [self getRed:&thisRed green:&thisGreen blue:&thisBlue alpha:nil];
+    [otherColour getRed:&otherRed green:&otherGreen blue:&otherBlue alpha:nil];
+    
+    CGFloat newRed = [self lerpFrom:thisRed to:otherRed alpha:amount];
+    CGFloat newGreen = [self lerpFrom:thisGreen to:otherGreen alpha:amount];
+    CGFloat newBlue = [self lerpFrom:thisBlue to:otherBlue alpha:amount];
+    
+    return [UIColor colorWithRed:newRed green:newGreen blue:newBlue alpha:1.0];
+}
+    
+- (CGFloat)lerpFrom:(CGFloat)a to:(CGFloat)b alpha:(CGFloat)alpha {
+    return (1 - alpha) * a + alpha * b;
+}
 
 //--------------------------------------------------------
 #pragma mark Inverted Colours

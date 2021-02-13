@@ -18,4 +18,10 @@
 /** The indexPath of the cell in the collectionView the cell is displayed in */
 -(NSIndexPath*)kfx_indexPath;
 
+/// Assumes the nib has the same name as the class. Loads nib with nil owner and options
++(UINib*)kfx_nib;
+
+/// Returns the class name for use as a reuseIdentifier
++(NSString*)kfx_reuseIdentifier;
+
 @end

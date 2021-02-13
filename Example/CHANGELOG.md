@@ -1,6 +1,8 @@
 
 # ChangeLog - KFXLocation
 
+### v0.7.0 | Update to use newish cocoapods options incremental_installation and generate_multiple_pod_projects.
+
 ### v0.6.0 | Wrapper methods + KFXCore update
 - Adds a bunch of wrapper methods to KFXLocationTracker
 - Updates KFXCore and uses of KFXCOREDegreesPerRadian
